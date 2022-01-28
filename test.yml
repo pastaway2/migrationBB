@@ -1,0 +1,10 @@
+- name: Git Sync Action
+  uses: wei/git-sync@v3.0.0
+---
+environment: production
+classes:
+  nfs::server:
+    exports:
+      - /srv/share1
+      - /srv/share3
+parameters:
