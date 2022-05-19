@@ -1,0 +1,138 @@
+name: Trials and Temporary Licenses
+description: Does your client/prospect want to trial a GitHub product?
+title: "Trial for <COMPANY>"
+labels: [Enterprise Trial Request, Priority - To Be Triaged, sales-support]
+body:
+
+- type: input
+  id: contact
+  attributes:
+    label: Which Client or Prospect?
+    description: Please link to SFDC account for client/prospect and update the issue subject above with the company name
+    placeholder: "ex: https://github.lightning.force.com/lightning/r/Account/0010V00002O1namQAB/view?0.source=alohaHeader"
+  validations:
+    required: true
+- type: dropdown
+  id: type
+  attributes:
+    label: What type of Trial Request?
+    description: "Is this an `Initial Request` or an `Extension`?"
+    options:
+    - Initial Request
+    - Trial Extension
+  validations:
+    required: true
+- type: dropdown
+  id: license_type
+  attributes:
+    label: Main License Type?
+    description: "Note: Customers can **self-serve** a standard GitHub Enterprise Cloud trial. For more information, go [here.](https://github.com/github/sales-operations/blob/98cece4466a5019a8b25e8a8e194a5df56f596ae/docs/Customer_Buying_Journey/6_Opportunity_Stage_Progression/6.3_Determined_Need/6.3.2_Processes/6.3.2.4_GitHub_Enterprise_Cloud_Trial_Process.md)"
+    options:
+    - GHE Cloud (Single Org)
+    - GHE Server 
+    - GHE Unified
+  validations:
+    required: true
+- type: dropdown
+  id: entact_needed
+  attributes:
+    label: Enterprise Account ?
+    description: Does your client/prospect need an Enterprise Account (EntAct) created?
+    options:
+    - "No"
+    - Yes (see below)
+    - Yes with EMU (see below)
+  validations:
+    required: true
+- type: textarea
+  id: entact_reason
+  attributes:
+    label: "If an Enterprise Account is being requested:"
+    description: |
+      Please Note: 
+        - Enterprise Managed User (EMU): Trials don't start here! Refer to the [`EMU customer journey checklist`](https://app.getguru.com/card/cGGdAdei/EMU-customer-journey-checklist). Please work with a SE on an EMU demo.
+    placeholder: "Reminder: Currently there is no automation surrounding EntAct trials/provisioning meaning all requests will be provisioned/tracked/dismantled by a Hubber. If your prospect needs to trial an EntAct please provide the business reasons why they need it (as opposed to a standalone cloud org) so we can understand the request and push for future product updates."
+  validations:
+    required: false
+- type: dropdown
+  id: addons
+  attributes:
+    label: "Any Additional Products Needed?"
+    description: | 
+      Please Note:
+      - Advanced Security (GHAS): Trial requests don't start here, please use the ([Cloud](https://github.com/github/advanced-security-field/issues/new?assignees=&labels=activity-poc%2C+github-advanced-security%2C+ghec&template=GHAS-Cloud-Trial.md&title=%5BGHAS+Cloud+Trial%5D%3A+%3Creplace_with_company_name%3E%2C+%3Creplace_with_date%3E)) and ([Server](https://github.com/github/advanced-security-field/issues/new?assignees=&labels=activity-poc%2C+github-advanced-security%2C+ghes&template=GHAS-Server-Trial.md&title=%5BGHAS+Server+Trial%5D%3A+%3Creplace_with_company_name%3E%2C+%3Creplace_with_date%3E)) links to start the process
+      - Actions/Packages: Currently there are no trials past the included entitlements for these offerings; see ([here](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions)) for additional information.
+    multiple: true
+    options:
+    - "Learning Lab"
+    - "Codespaces (see below)"
+    - "Advanced Security (GHAS) (see above)"
+    - "Insights (currently in closed beta)"
+  validations:
+    required: false
+- type: textarea
+  id: codespaces_reason
+  attributes:
+    label: "Additional Codespaces Trial Information:"
+    description: | 
+       Please Note: 
+       - SOPS `can not` open up a trial request on your behalf without the below information 
+       - Just put "n/a" in this section if you are not requesting a Codespaces trial
+       1. Estimate of the engineering team size that will be trying Codespaces as part of this trial: 
+       2. TL;DR on what problems the customer expects Codespaces to solve: 
+       3. Internal GH Contact Handles: 
+       4. External Client Emails: 
+       5. Client / Prospect meets the Codespaces [`Target Customer`](https://app.getguru.com/card/T4zn94Xc/Codespaces-Target-Customer) criteria:
+    placeholder: | 
+      1. Estimate of the engineering team size that will be trying Codespaces as part of this trial:
+      2. TL;DR on what problems the customer expects Codespaces to solve: 
+      3. Internal GH Contact Handles: 
+      4. External Client Emails: 
+      5. Meets Criteria: Yes / No
+  validations:
+    required: true
+- type: input
+  id: ghecorg
+  attributes:
+    label: "Please list any existing trial Cloud Orgs or Server Orgs:"
+    placeholder: "Please list all existing orgs/IDs" 
+  validations:
+    required: true
+- type: input
+  id: admin
+  attributes:
+    label: Client / Prospect Admin Email?
+    description: If requesting a Server or GHE (EntAct) trial, where should the initial admin invite be sent
+    placeholder: newclient@email.com or @handle
+  validations:
+    required: false
+- type: dropdown
+  id: length
+  attributes:
+    label: Trial or Extension Length?
+    description: How long are you requesting the trial / extension for?
+    options:
+    - "1 Week"
+    - "2 Weeks"
+    - "30 Days"
+    - "45 Days"
+    - "Other (see below)"
+  validations:
+    required: true
+- type: textarea
+  id: length_reason
+  attributes:
+    label: "If you requested an extension or chose other above"
+    description: "Please provide reasoning on why an an extension or non standard trial is being requested"
+    placeholder: "Please Note: Max total trial length (with extensions) is 90 days (with day 46-90 being approved by revenue accounting) exception requests above 90 days require CFO approval"
+  validations:
+    required: false
+- type: textarea
+  id: notes
+  attributes:
+    label: Additional Information
+    description: "Any additional relevant links or hubbers/teams you need to @ mention?"
+    value: |
+      - @github/sales-support & @github/revenue
+  validations:
+    required: false
